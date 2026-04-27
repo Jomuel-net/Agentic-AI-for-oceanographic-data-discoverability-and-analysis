@@ -1,0 +1,30 @@
+load_instructions_task:
+  description: >
+    Use the tool read_json to load the JSON file located at {input_file}.
+    Extract the values of "repository", "database" and "filename".
+  expected_output: >
+    A JSON object containing repository, database and filename.
+
+  agent: load_instructions_agent
+
+file_exists_in_repo_task:
+  description: >
+    Using the tool checking, verify if the file {filename} exists in the repository {repository}.
+  expected_output: >
+    A boolean indicating if the file exists.
+
+  agent: file_exists_in_repo_agent
+  context:
+   - load_instructions_task
+
+forward_from_database_task:
+  description: >
+    Using the tool forward, copy the file {filename} from {database} to {repository},
+    if the file does not already exist. You will know it usint {exists}.
+  expected_output: >
+    A message describing the forwarding result.
+
+  agent: forward_from_database_agent
+  context:
+    - file_exists_in_repo_task
+ 
