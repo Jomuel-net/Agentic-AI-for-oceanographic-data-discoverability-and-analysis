@@ -1,0 +1,34 @@
+load_instructions_task:
+  description: >
+    Please, follow these stages to accomplish your tasks clearly:
+    -Firstly : Use the tool read_json to load the content of the JSON file {input_file}, and 
+    extract, using again the tool read_json, the values of the repository path, database path and the name.
+  expected_output: >
+    informations assigned  provided by the JSON object.
+
+  agent: load_instructions_agent
+
+file_exists_in_repo_task:
+  description: >
+    Please, follow these stages to accomplish your tasks clearly:
+    By Using the tool checking and the content of the variable provided by the previous agent,
+    please verify if the file exists in the repository by using its path.
+  expected_output: >
+    A string feedback which indicates if the file exists inside the repository or not.
+
+  agent: file_exists_in_repo_agent
+  context:
+   - load_instructions_task
+
+forward_from_database_task:
+  description: >
+    Please, follow these stages to accomplish your tasks clearly:
+    By using the tool forward, copy the file from the database path to the repository path,
+    if the file does not already exist. You will know it, don't worry.
+  expected_output: >
+    A message describing the forwarding result.
+
+  agent: forward_from_database_agent
+  context:
+    - file_exists_in_repo_task
+ #  python -m local_checking_crewai.main
