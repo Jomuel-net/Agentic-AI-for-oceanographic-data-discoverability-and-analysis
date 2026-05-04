@@ -1,0 +1,24 @@
+[project]
+name = "local_dataflow_crewai"
+version = "0.1.0"
+description = "Local_dataflow_crewai using crewAI"
+authors = [{ name = "Jomuel", email = "jomuelndjanko17@gmail.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.14.2"
+]
+
+[project.scripts]
+local_dataflow_crewai = "local_dataflow_crewai.main:run"
+run_crew = "local_dataflow_crewai.main:run"
+train = "local_dataflow_crewai.main:train"
+replay = "local_dataflow_crewai.main:replay"
+test = "local_dataflow_crewai.main:test"
+run_with_trigger = "local_dataflow_crewai.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

@@ -1,0 +1,40 @@
+Readjson_task:
+  description: >
+    Please, follow this description to accomplish your tasks clearly:
+    Use the tool read_json to load,  and extract the content of the 
+    JSON file {input_file}, like the id, title and the dataflow.
+    Don't forget to provide a feedback, if an error occured.
+  expected_output: >
+    Return raw datas from the JSON file.
+
+  agent: Readjson_agent
+
+DeploymentFirstArea_task:
+  description: >
+    Please, follow this stage to accomplish your tasks clearly:
+    By Using the tool deploymentfirstarea and the content of the variable
+    provided by the previous agent, please deploys the data provided
+    from the first repository to the next one, with the processing step inside.
+    Don't forget to provide a feedback, if an error occured during this first deployment.
+  expected_output: >
+    The path of the arrival repository and the datatype of the file deployed.
+
+  agent: DeploymentFirstArea_agent
+  context:
+   - Readjson_task
+
+DeploymentSecondArea_task:
+  description: >
+    Please, follow this stage to accomplish your tasks clearly:
+    By Using the tool deploymentsecondarea and the content of the variable
+    provided by the first agent, please deploys the data provided
+    from the second repository to the third one, with the processing step inside.
+    Don't forget to provide a feedback, if an error occured during this second deployment.
+  expected_output: >
+    A message describing the global deployment result
+
+  agent: DeploymentSecondArea_agent
+  context:
+    - DeploymentFirstArea_task
+
+ 

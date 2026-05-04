@@ -1,0 +1,29 @@
+{
+ 
+  "id": {"identifier": "dataflow", "type": "local"},
+  "title": "Local Data Flow",
+  "data_flow": [
+
+        {
+            "area": "Excel to CSV",
+            "dataflow_step": "Conversion_1",
+            "type_input": ".xlsx",
+            "path_input": "C:/Users/jomue/Documents/A2/Internship/Deep_comprehension_DMP/Agents/local_dataflow_crewai/Database/Data.xlsx",
+            "type_output": ".CSV",
+            "path_output": "C:/Users/jomue/Documents/A2/Internship/Deep_comprehension_DMP/Agents/local_dataflow_crewai/Repository_1",
+            "tools_and_technologies": ["CrewAI"]
+        },
+
+        {
+            "area": "CSV to Excel",
+            "dataflow_step": "Conversion_2",
+            "type_input": ".CSV",
+            "path_input": "C:/Users/jomue/Documents/A2/Internship/Deep_comprehension_DMP/Agents/local_dataflow_crewai/Repository_1",
+            "type_output": ".xlsx",
+            "path_output": "C:/Users/jomue/Documents/A2/Internship/Deep_comprehension_DMP/Agents/local_dataflow_crewai/Repository_2",
+            "tools_and_technologies": ["CrewAI"]
+        }
+
+    ]
+
+}
