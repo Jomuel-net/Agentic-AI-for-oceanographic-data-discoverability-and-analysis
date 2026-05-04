@@ -168,7 +168,7 @@ class DeploymentSecondAreaTool(BaseTool):
             print(f"=========The goal is to make to obtain this type for the input data :  {type_output2}========")
             print(f"=========We will use :{tools_and_technologies2} as technology=========")
 
-            if type_input2 == ".CSV":
+            if type_input2 == ".csv":
                 
                 full_path = os.path.join(path_input2, "exceltocsv.csv")
                 csvtoexcel = pd.read_csv(full_path)                                                  # csv to excel

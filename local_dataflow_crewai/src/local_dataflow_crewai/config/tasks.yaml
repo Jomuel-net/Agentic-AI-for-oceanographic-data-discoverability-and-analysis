@@ -36,5 +36,6 @@ DeploymentSecondArea_task:
   agent: DeploymentSecondArea_agent
   context:
     - DeploymentFirstArea_task
+    - Readjson_task
 
  
